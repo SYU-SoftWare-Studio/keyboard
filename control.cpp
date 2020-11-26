@@ -1,9 +1,13 @@
+
 #include "control.h"
+
+
 #include <QWidget>
 #include <QPoint>
 
-Control::Control(){
-}
+//Control::Control(BaseBoard &w):w(w){
+
+//}
 
 Control::~Control(){}
 

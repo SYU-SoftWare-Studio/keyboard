@@ -3,5 +3,9 @@
 
 #include <QSystemTrayIcon>
 
+class root:
+    public QSystemTrayIcon{
+
+    };
 
 #endif // ROOT_H

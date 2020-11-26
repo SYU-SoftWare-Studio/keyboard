@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QPoint>
 #include <QMouseEvent>
+#include <QSystemTrayIcon>
 
 //template <typename T>
 //窗体抽象类
@@ -22,15 +23,20 @@
 //};
 
 //最底层容器
-class BaseBoard:public QWidget{
+class BaseBoard:
+        public QWidget{
     Q_OBJECT
 public:
     BaseBoard(QWidget *parent = Q_NULLPTR);
     ~BaseBoard();
+    void onclick(QSystemTrayIcon::ActivationReason);
+
     //int initialze();//override
 private:
     bool m_bMoving;         // 移动标志
     QPoint m_pointPosition; // 移动位置
+public slots:
+    void display();
 
 //public slots:
 //    void rmf();
