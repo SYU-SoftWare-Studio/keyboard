@@ -1,17 +1,30 @@
 
 #include "control.h"
 
+#include <QApplication>
 
-#include <QWidget>
-#include <QPoint>
+#include <QScreen>
 
-//Control::Control(BaseBoard &w):w(w){
+//QList<QScreen *> list_screen = QGuiApplication::screens();
+//    QRect rect = list_screen.at(0)->geometry();
+Control::Control(QWidget *w):w(w){
+    QList<QScreen *> list_screen = QGuiApplication::screens();
+    QRect rect = list_screen.at(0)->geometry();
+    high=rect.height();
+    width=rect.width();
+}
 
-//}
+Control::~Control(){
+    buttonArray.clear();
+}
 
-Control::~Control(){}
+bool Control::reduceAPushButton(QString name){
+    QPushButton nPushButton(name);
+    nPushButton.setParent(&w);
+    nPushButton.setGeometry(QRect(100,100,100,100));
 
-bool Control::reduceAButton(){return true;}
+    return true;
+}
 
 bool Control::deleteAButton(){return true;}
 

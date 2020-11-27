@@ -19,12 +19,10 @@ SOURCES += \
     Widg.cpp \
     control.cpp \
     main.cpp \
-    mainwindow.cpp \
     root.cpp
 
 HEADERS += \
     control.h \
-    mainwindow.h \
     root.h \
     widg.h
 

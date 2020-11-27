@@ -23,7 +23,7 @@ void BaseBoard::display(){
 
 void BaseBoard::onclick(QSystemTrayIcon::ActivationReason reson){
     if(reson == QSystemTrayIcon::Trigger){
-        cout<<"C++SB";
+        cout<<"C++";
         this->show();
     }
 }

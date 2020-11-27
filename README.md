@@ -9,3 +9,4 @@ QT 继承QWidget && 继承QDialog  https://www.cnblogs.com/Braveliu/p/9779679.ht
 Qt下载  http://c.biancheng.net/view/3851.html
 fcitx  https://github.com/fcitx/fcitx-qt5
 QT按钮组件 https://blog.51cto.com/9291927/1868161
+t程序开机自动运行 cnblogs.com/tingtaishou/p/11577006.html
