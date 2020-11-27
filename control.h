@@ -7,7 +7,7 @@
 #include <QRadioButton>
 #include <QPushButton>
 
-#include "widg.h"
+#include "baseboard.h"
 
 //控件管理类
 class Control{

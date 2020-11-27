@@ -1,4 +1,4 @@
-#include "widg.h"
+#include "baseboard.h"
 #include <QApplication>
 
 
@@ -28,9 +28,23 @@ void BaseBoard::onclick(QSystemTrayIcon::ActivationReason reson){
     }
 }
 
+bool BaseBoard::makeAPushButton(QString name,QRect pointer){
+    QPushButton* nPButton = new QPushButton(name,this);
+    nPButton->setGeometry(pointer);
+    nPButton->show();
+    buttonArry.push_back(nPButton);
+    return true;
+}
+
 BaseBoard::~BaseBoard(){}
-//int BaseBoard::initialze(){
-//    return 0;
-//}
+
+
+
+int BaseBoard::initialze(){
+
+
+    return 0;
+
+}
 
 

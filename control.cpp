@@ -18,13 +18,14 @@ Control::~Control(){
     buttonArray.clear();
 }
 
-bool Control::reduceAPushButton(QString name){
-    QPushButton nPushButton(name);
-    nPushButton.setParent(&w);
-    nPushButton.setGeometry(QRect(100,100,100,100));
-
-    return true;
-}
+//2020/11/27 无法解决生命周期的问题
+//bool Control::reduceAPushButton(QString name){
+//    QPushButton nPushButton(name);
+//    nPushButton.setParent(&w);
+//    nPushButton.setGeometry(300,300,200,500);
+//    nPushButton.show();
+//    return true;
+//}
 
 bool Control::deleteAButton(){return true;}
 

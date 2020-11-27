@@ -5,6 +5,9 @@
 #include <QPoint>
 #include <QMouseEvent>
 #include <QSystemTrayIcon>
+#include <QPushButton>
+
+#include <vector>
 
 //template <typename T>
 //窗体抽象类
@@ -30,8 +33,10 @@ public:
     BaseBoard(QWidget *parent = Q_NULLPTR);
     ~BaseBoard();
     void onclick(QSystemTrayIcon::ActivationReason);
+    bool makeAPushButton(QString,QRect);
+    std::vector<QPushButton*> buttonArry;
 
-    //int initialze();//override
+    int initialze();//override
 private:
     bool m_bMoving;         // 移动标志
     QPoint m_pointPosition; // 移动位置
