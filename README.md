@@ -10,3 +10,7 @@ Qt下载  http://c.biancheng.net/view/3851.html
 fcitx  https://github.com/fcitx/fcitx-qt5
 QT按钮组件 https://blog.51cto.com/9291927/1868161
 t程序开机自动运行 cnblogs.com/tingtaishou/p/11577006.html
+
+## 2020/11/27日志
+> 陈工终于解决了第一个按钮的demo，下一步去开发baseBoard的布局
+> PS：C++太傻逼了
