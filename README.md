@@ -13,4 +13,3 @@ t程序开机自动运行 cnblogs.com/tingtaishou/p/11577006.html
 
 ## 2020/11/27日志
 > 陈工终于解决了第一个按钮的demo，下一步去开发baseBoard的布局
-> PS：C++太傻逼了
