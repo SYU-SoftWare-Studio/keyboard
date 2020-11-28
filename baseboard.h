@@ -51,6 +51,7 @@ private:
     int width;
 public slots:
     void display();
+    void hidden();
 
 //public slots:
 //    void rmf();

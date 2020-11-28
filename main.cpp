@@ -32,18 +32,8 @@ int main(int argc, char** argv)
     w.resize(screenSize.first,screenSize.second/2);
     w.move(0,screenSize.second/2);
     w.setWindowFlags(Qt::FramelessWindowHint | Qt::Tool | Qt::WindowStaysOnTopHint);
+    w.setStyleSheet("background:black");
 
-//    Control manage(&w);
-//    manage.reduceAPushButton("cqc");
-//    QPushButton nPushButton("name");
-//    nPushButton.setParent(&w);
-//    nPushButton.setGeometry(QRect(100,100,100,100));
-//    sbcqc = !sbcqc;
-//    QRect pointer = {100,100,45,200};
-//    QRect pointer2 = {220,0,150,200};
-//    w.makeAPushButton();
-//    w.makeAFuncPushButton("122313",pointer2,1);
-//    w.makeAFuncPushButton("CPCCCP",pointer,2);
 
     qDebug()<<w.buttonNames.size();
 
@@ -53,10 +43,7 @@ int main(int argc, char** argv)
     QSystemTrayIcon system_tray;
     system_tray.setToolTip(QString("12312"));
     system_tray.setIcon(QIcon(":\\icon\\123.jpg"));
-
-    system_tray.connect(&system_tray , SIGNAL(activated(QSystemTrayIcon::ActivationReason)), &w ,
-                        SLOT(display()));
+    system_tray.connect(&system_tray , SIGNAL(activated(QSystemTrayIcon::ActivationReason)), &w ,SLOT(display()));
     system_tray.show();
-
     return app.exec();
 }

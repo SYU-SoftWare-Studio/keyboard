@@ -11,18 +11,13 @@ using namespace std;
 BaseBoard::BaseBoard(QWidget* parent):QWidget(parent),m_bMoving(false){
     //设置背景
     buttonArry = new QButtonGroup(this);
-    QPalette palette;
-    palette.setColor(QPalette::Background, Qt::white);
-    setPalette(palette);
     //关闭程序后不会弹出消息框
     QApplication::setQuitOnLastWindowClosed(true);
-
     //获取屏幕宽高
     QList<QScreen *> list_screen = QGuiApplication::screens();
     QRect rect = list_screen.at(0)->geometry();
     height=rect.height();
     width=rect.width();
-
     //初始化buttonName字典
     buttonNames = {
       "ESC","`","1","2","3","4","5","6","7","8","9","0","-","=","BACKSPACE",
@@ -31,9 +26,15 @@ BaseBoard::BaseBoard(QWidget* parent):QWidget(parent),m_bMoving(false){
         "Shift","z","x","c","v","b","n","m",",",".","/","↑","Shift",
         "Fn","Ctrl","Win","Alt","中","Space","Alt","Ctrl","←","↓","→","关闭键盘"
     };
+
+
+
 }
 void BaseBoard::display(){
     this->show();
+}
+void BaseBoard::hidden(){
+    this->hide();
 }
 
 void BaseBoard::onclick(QSystemTrayIcon::ActivationReason reson){
@@ -47,7 +48,9 @@ bool BaseBoard::makeAPushButton(QString name,QRect pointer,int id){
     QPushButton* nPButton = new QPushButton(name,this);
     nPButton->setGeometry(pointer);
     nPButton->show();
-    QString style = QString("color: black;font-size:%1px").arg(width*0.0125);
+    QString style = QString("QPushButton{color: white;font-size:%1px;background:rgba(160,160,160,0.2)}"
+                            "QPushButton:hover{background:rgba(203,234,255,0.7);color:black}"
+                            "QPushButton:pressed{background:rgba(203,234,255,0.7)}").arg(width*0.0125);
     nPButton->setStyleSheet(style);
     buttonArry->addButton(nPButton,id);
     return true;
@@ -57,10 +60,10 @@ bool BaseBoard::makeAFuncPushButton(QString name, QRect pointer,int id){
     QPushButton* nPButton = new QPushButton(name,this);
     nPButton->setGeometry(pointer);
     nPButton->setCheckable(true);
-//    nPButton->setChecked(true);//只能设置一个
     nPButton->setAutoExclusive(true);
     nPButton->show();
-    QString style = QString("color: black;font-size:%1px").arg(width*0.0125);
+    QString style = QString("QPushButton{color: white;font-size:%1px;background:rgba(160,160,160,0.2)}"
+                            "QPushButton:pressed,QPushButton:checked{background:rgba(124,239,255,0.4)}").arg(width*0.0125);
     nPButton->setStyleSheet(style);
     buttonArry->addButton(nPButton,id);
     return true;
@@ -148,23 +151,8 @@ bool BaseBoard::basicLayout(){
 
 
 int BaseBoard::initialze(){
-//    int const unit   = width/16.2;
-//    int const margin = unit*0.05;
-//    int const hei  = height/12;
-//    int id     = 1;
-//    int length = 0;
-//    int index  = 0;
-
-//    for (int i=0;i<14;i++) {
-//        makeAPushButton(buttonNames[index],QRect(length,hei,unit,hei-margin),id);
-//        id++;
-//        length = length + unit + margin;
-//        index++;
-//    }
-//    makeAPushButton(buttonNames[index],QRect(length,hei,width-length,hei-margin),id);
     basicLayout();
     return 0;
-
 }
 
 
