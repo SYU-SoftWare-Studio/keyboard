@@ -29,7 +29,7 @@ BaseBoard::BaseBoard(QWidget* parent):QWidget(parent),m_bMoving(false){
         "TAB","q","w","e","r","t","y","u","i","o","p","[","]","\\","DEL",
         "CapsLock","a","s","d","f","g","h","j","k","l",";","'","Enter",
         "Shift","z","x","c","v","b","n","m",",",".","/","↑","Shift",
-        "Fn","Ctrl","Win","Alt","中","Space","Alt","Ctrl","←","↓","→"
+        "Fn","Ctrl","Win","Alt","中","Space","Alt","Ctrl","←","↓","→","关闭键盘"
     };
 }
 void BaseBoard::display(){
@@ -60,27 +60,109 @@ bool BaseBoard::makeAFuncPushButton(QString name, QRect pointer,int id){
 //    nPButton->setChecked(true);//只能设置一个
     nPButton->setAutoExclusive(true);
     nPButton->show();
+    QString style = QString("color: black;font-size:%1px").arg(width*0.0125);
+    nPButton->setStyleSheet(style);
     buttonArry->addButton(nPButton,id);
     return true;
 };
 
 BaseBoard::~BaseBoard(){}
 
+bool BaseBoard::basicLayout(){
+    int const unit   = width/16.2;
+    int const margin = unit*0.05;
+    int const hei  = height/12;
+    int id     = 1;//button的id
+    int length = 0;
+    int index  = 0;//buttonName的指针
+    //this is the first line pain
+    for (int i=0;i<14;i++) {
+        makeAPushButton(buttonNames[index],QRect(length,hei,unit,hei-margin),id);
+        id++;
+        length = length + unit + margin;
+        index++;
+    }
+    makeAPushButton(buttonNames[index],QRect(length,hei,width-length,hei-margin),id);
+    index++;length=0;id++;
+
+    //this in the second pain fuck c++
+    makeAPushButton(buttonNames[index],QRect(length,2*hei,1.5*unit,hei-margin),id);
+    index++;length=length + 1.5*unit + margin;id++;
+    for(int i=0;i<13;i++){
+        makeAPushButton(buttonNames[index],QRect(length,2*hei,unit,hei-margin),id);
+        id++;
+        length = length + unit + margin;
+        index++;
+    }
+    makeAPushButton(buttonNames[index],QRect(length,2*hei,width-length,hei-margin),id);
+    index++;length=0;id++;
+
+    //start third pain
+    makeAFuncPushButton(buttonNames[index],QRect(length,3*hei,2*unit,hei-margin),id);
+    index++;length=length + 2*unit + margin;id++;
+    for(int i=0;i<11;i++){
+        makeAPushButton(buttonNames[index],QRect(length,3*hei,unit,hei-margin),id);
+        id++;
+        length = length + unit + margin;
+        index++;
+    }
+    makeAPushButton(buttonNames[index],QRect(length,3*hei,width-length,hei-margin),id);
+    index++;length=0;id++;
+
+    //this is forth pain
+    makeAFuncPushButton(buttonNames[index],QRect(length,4*hei,2.5*unit,hei-margin),id);
+    index++;length=length + 2.5*unit + margin;id++;
+    for(int i=0;i<11;i++){
+        makeAPushButton(buttonNames[index],QRect(length,4*hei,unit,hei-margin),id);
+        id++;
+        length = length + unit + margin;
+        index++;
+    }
+    makeAFuncPushButton(buttonNames[index],QRect(length,4*hei,width-length,hei-margin),id);
+    index++;length=0;id++;
+
+    //this is most pain
+    for (int i = 0;i<4;i++) {//最后一行前四个功能按钮
+        makeAFuncPushButton(buttonNames[index],QRect(length,5*hei,unit,hei-margin),id);
+        id++;
+        length = length + unit + margin;
+        index++;
+    }
+    makeAPushButton(buttonNames[index],QRect(length,5*hei,unit,hei-margin),id);
+    index++;length=length + unit + margin;id++;
+    makeAPushButton(buttonNames[index],QRect(length,5*hei,4.5*unit+margin*2,hei-margin),id);
+    index++;length=length + 4.5*unit + margin*3;id++;
+    makeAFuncPushButton(buttonNames[index],QRect(length,5*hei,unit,hei-margin),id);
+    index++;length=length + unit + margin;id++;
+    makeAFuncPushButton(buttonNames[index],QRect(length,5*hei,unit,hei-margin),id);
+    index++;length=length + unit + margin;id++;
+    for (int i = 0;i<3;i++) {
+        makeAPushButton(buttonNames[index],QRect(length,5*hei,unit,hei-margin),id);
+        id++;
+        length = length + unit + margin;
+        index++;
+    }
+    makeAPushButton(buttonNames[index],QRect(length,5*hei,width-length,hei-margin),id);
+    return true;
+}
 
 
 int BaseBoard::initialze(){
-    int id     = 1;
-    int length = 0;
-    int index  = 0;
-    int const hei  = height/12;
-    int const unit = width/32;
-    for (int i=0;i<14;i++) {
-        makeAPushButton(buttonNames[index],QRect(length,hei*1.05,2*unit,0.95*hei),id);
-        id++;
-        length = length + 2.08*unit;
-        index++;
-    }
+//    int const unit   = width/16.2;
+//    int const margin = unit*0.05;
+//    int const hei  = height/12;
+//    int id     = 1;
+//    int length = 0;
+//    int index  = 0;
 
+//    for (int i=0;i<14;i++) {
+//        makeAPushButton(buttonNames[index],QRect(length,hei,unit,hei-margin),id);
+//        id++;
+//        length = length + unit + margin;
+//        index++;
+//    }
+//    makeAPushButton(buttonNames[index],QRect(length,hei,width-length,hei-margin),id);
+    basicLayout();
     return 0;
 
 }

@@ -40,8 +40,10 @@ public:
     void onclick(QSystemTrayIcon::ActivationReason);
     bool makeAPushButton(QString,QRect,int);  //生成普通按钮
     bool makeAFuncPushButton(QString,QRect,int); //生成功能按钮
+    bool basicLayout();
     int initialze();//override
     std::vector<QString> buttonNames;
+
 private:
     bool m_bMoving;         // 移动标志
     QPoint m_pointPosition; // 移动位置
