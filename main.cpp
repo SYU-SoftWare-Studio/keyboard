@@ -39,11 +39,15 @@ int main(int argc, char** argv)
 //    nPushButton.setParent(&w);
 //    nPushButton.setGeometry(QRect(100,100,100,100));
 //    sbcqc = !sbcqc;
-    QRect pointer = {100,100,45,200};
-    QRect pointer2 = {220,0,150,200};
-    w.makeAPushButton("122313",pointer);
-    w.makeAPushButton("122313",pointer2);
+//    QRect pointer = {100,100,45,200};
+//    QRect pointer2 = {220,0,150,200};
+//    w.makeAPushButton();
+//    w.makeAFuncPushButton("122313",pointer2,1);
+//    w.makeAFuncPushButton("CPCCCP",pointer,2);
 
+    qDebug()<<w.buttonNames.size();
+
+    w.initialze();
 
 
     QSystemTrayIcon system_tray;
