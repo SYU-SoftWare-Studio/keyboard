@@ -1,5 +1,5 @@
-#ifndef LAYOUT_H
-#define LAYOUT_H
+#ifndef CONTROL_H
+#define CONTROL_H
 
 #include <vector>
 

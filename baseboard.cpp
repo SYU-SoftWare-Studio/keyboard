@@ -1,4 +1,7 @@
 #include "baseboard.h"
+
+#include "mybutton.h"
+
 #include <QApplication>
 #include <QScreen>
 
@@ -10,7 +13,7 @@ using namespace std;
 //关于第一层容器的构造函数
 BaseBoard::BaseBoard(QWidget* parent):QWidget(parent),m_bMoving(false){
     //设置背景
-    buttonArry = new QButtonGroup(this);
+//    buttonArry = new QButtonGroup(this);
     //关闭程序后不会弹出消息框
     QApplication::setQuitOnLastWindowClosed(true);
     //获取屏幕宽高
@@ -18,6 +21,9 @@ BaseBoard::BaseBoard(QWidget* parent):QWidget(parent),m_bMoving(false){
     QRect rect = list_screen.at(0)->geometry();
     height=rect.height();
     width=rect.width();
+
+
+
     //初始化buttonName字典
     buttonNames = {
       "ESC","`","1","2","3","4","5","6","7","8","9","0","-","=","BACKSPACE",
@@ -52,7 +58,7 @@ bool BaseBoard::makeAPushButton(QString name,QRect pointer,int id){
                             "QPushButton:hover{background:rgba(203,234,255,0.7);color:black}"
                             "QPushButton:pressed{background:rgba(203,234,255,0.7)}").arg(width*0.0125);
     nPButton->setStyleSheet(style);
-    buttonArry->addButton(nPButton,id);
+    buttonArry.push_back(nPButton);
     return true;
 }
 
@@ -65,9 +71,24 @@ bool BaseBoard::makeAFuncPushButton(QString name, QRect pointer,int id){
     QString style = QString("QPushButton{color: white;font-size:%1px;background:rgba(160,160,160,0.2)}"
                             "QPushButton:pressed,QPushButton:checked{background:rgba(124,239,255,0.4)}").arg(width*0.0125);
     nPButton->setStyleSheet(style);
-    buttonArry->addButton(nPButton,id);
+    buttonArry.push_back(nPButton);
     return true;
 };
+
+
+bool BaseBoard::makeACloseButton(QString name,QRect pointer,int id){
+
+    myCloseButton* cqcSb = new myCloseButton(name,this,id);
+
+    cqcSb->setGeometry(pointer);
+    cqcSb->show();
+    QString style = QString("QPushButton{color: white;font-size:%1px;background:rgba(160,160,160,0.2)}"
+                            "QPushButton:hover{background:rgba(203,234,255,0.7);color:black}"
+                            "QPushButton:pressed,QPushButton:checked{background:rgba(124,239,255,0.4)}").arg(width*0.0125);
+    cqcSb->setStyleSheet(style);
+    buttonArry.push_back(cqcSb);
+    return  true;
+}
 
 BaseBoard::~BaseBoard(){}
 
@@ -145,7 +166,7 @@ bool BaseBoard::basicLayout(){
         length = length + unit + margin;
         index++;
     }
-    makeAPushButton(buttonNames[index],QRect(length,5*hei,width-length,hei-margin),id);
+    makeACloseButton(buttonNames[index],QRect(length,5*hei,width-length,hei-margin),id);
     return true;
 }
 

@@ -19,11 +19,13 @@ SOURCES += \
     baseboard.cpp \
     control.cpp \
     main.cpp \
+    mybutton.cpp \
     root.cpp
 
 HEADERS += \
     baseboard.h \
     control.h \
+    mybutton.h \
     root.h
 
 FORMS += \

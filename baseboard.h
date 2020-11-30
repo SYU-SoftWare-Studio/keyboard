@@ -1,5 +1,7 @@
-#ifndef WIDG_H
-#define WIDG_H
+#ifndef BASEBOARD_H
+#define BASEBOARD_H
+
+#include "mybutton.h"
 
 #include <QWidget>
 #include <QPoint>
@@ -36,10 +38,12 @@ class BaseBoard:
 public:
     BaseBoard(QWidget *parent = Q_NULLPTR);
     ~BaseBoard();
-    QButtonGroup* buttonArry;
+//    QButtonGroup* buttonArry;
+    std::vector <QPushButton*> buttonArry;
     void onclick(QSystemTrayIcon::ActivationReason);
     bool makeAPushButton(QString,QRect,int);  //生成普通按钮
     bool makeAFuncPushButton(QString,QRect,int); //生成功能按钮
+    bool makeACloseButton(QString,QRect,int); //生成一个关闭窗口按钮
     bool basicLayout();
     int initialze();//override
     std::vector<QString> buttonNames;
@@ -49,6 +53,8 @@ private:
     QPoint m_pointPosition; // 移动位置
     int height;
     int width;
+//    myCloseButton *cqcSb;
+
 public slots:
     void display();
     void hidden();
