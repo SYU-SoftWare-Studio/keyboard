@@ -21,7 +21,7 @@ BaseBoard::BaseBoard(QWidget* parent):QWidget(parent),m_bMoving(false){
     QRect rect = list_screen.at(0)->geometry();
     height=rect.height();
     width=rect.width();
-
+//    this->setFocusPolicy(Qt::NoFocus);
 
 
     //初始化buttonName字典
@@ -38,6 +38,7 @@ BaseBoard::BaseBoard(QWidget* parent):QWidget(parent),m_bMoving(false){
 }
 void BaseBoard::display(){
     this->show();
+    this->setFocusPolicy(Qt::NoFocus);
 }
 void BaseBoard::hidden(){
     this->hide();
@@ -58,6 +59,7 @@ bool BaseBoard::makeAPushButton(QString name,QRect pointer,int id){
                             "QPushButton:hover{background:rgba(203,234,255,0.7);color:black}"
                             "QPushButton:pressed{background:rgba(203,234,255,0.7)}").arg(width*0.0125);
     nPButton->setStyleSheet(style);
+    nPButton->setFocusPolicy(Qt::NoFocus);
     buttonArry.push_back(nPButton);
     return true;
 }
@@ -71,6 +73,7 @@ bool BaseBoard::makeAFuncPushButton(QString name, QRect pointer,int id){
     QString style = QString("QPushButton{color: white;font-size:%1px;background:rgba(160,160,160,0.2)}"
                             "QPushButton:pressed,QPushButton:checked{background:rgba(124,239,255,0.4)}").arg(width*0.0125);
     nPButton->setStyleSheet(style);
+    nPButton->setFocusPolicy(Qt::NoFocus);
     buttonArry.push_back(nPButton);
     return true;
 };

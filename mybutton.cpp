@@ -21,8 +21,8 @@ myOutputButton::myOutputButton(QString name,QWidget *parent,int id):
 }
 
 
-void myOutputButton::changeFunByTab(){
+//void myOutputButton::changeFunByTab(){
 
-};
+//};
 
 myOutputButton::~myOutputButton(){}

@@ -31,7 +31,8 @@ int main(int argc, char** argv)
     BaseBoard w;
     w.resize(screenSize.first,screenSize.second/2);
     w.move(0,screenSize.second/2);
-    w.setWindowFlags(Qt::FramelessWindowHint | Qt::Tool | Qt::WindowStaysOnTopHint);
+//    w.setWindowFlags(Qt::FramelessWindowHint | Qt::Tool | Qt::WindowStaysOnTopHint);
+    w.setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool | Qt::WindowDoesNotAcceptFocus);
     w.setStyleSheet("background:black");
 
 
